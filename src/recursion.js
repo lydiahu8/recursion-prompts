@@ -7,16 +7,92 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  //Termination Condition
+  if (n < 0) {
+    return null;
+
+  //Base Case
+  } else if (n === 0) {
+    return 1;
+
+  //Recursive Case
+  } else {
+    return n * factorial(n - 1);
+  }
+
+  //5 * factorial(5 - 1)
+    //4 * factorial(4 - 1)
+      //3 * factorial(3 - 1)
+        //2 * factorial(2 - 1)
+          //1 * factorial(1 - 1)
+
+  //5 x 4 x 3 x 2 x 1 = 120
+
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+
+  //Base Case
+
+  //if length of array is 0
+    //return 0
+
+  if (array.length === 0) {
+    return 0;
+  } else {
+
+  //Recursive Case
+
+  //otherwise, return first element of array plus the sum of the new array excluding the first element
+
+    return array[0] + sum(array.slice(1));
+  }
+
+  //1 + sum([2,3,4,5,6])
+    //2 + sum([3,4,5,6])
+      //3 + sum([4,5,6])
+        //4 + sum([5,6])
+          //5 + sum([6])
+            //6 + sum([])
+
+  //6+5+4+3+2+1 = 21
+
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  //if length of array is 0
+    //return 0
+  //otherwise,
+    //set acc to 0
+  //loop through the array
+    //check if the element at index i is an array
+      //if so, set acc plus equal to arraySum function with the current array passed in
+    //otherwise,
+     //set acc plus equal to the current element
+  //return acc
+
+  if (array.length === 0) {
+    return 0;
+
+  } else {
+
+    var acc = 0;
+
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        acc += arraySum(array[i]);
+      } else {
+        acc += array[i];
+      }
+    }
+
+qq    return acc;
+  }
+
 };
 
 // 4. Check if a number is even.
